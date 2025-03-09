@@ -185,7 +185,8 @@ const isLoading = ref(false)
 async function calculateOptimalStock() {
   isLoading.value = true
   try {
-    const response = await axios.post('http://localhost:8080/api/yogurt/optimize', parameters)
+    const BASE_URL = import.meta.env.VITE_BASE_URL
+    const response = await axios.post(BASE_URL + '/yogurt/optimize', parameters)
     simulationResult.value = response.data
   } catch (error) {
     console.error('Erreur lors du calcul du stock optimal:', error)
